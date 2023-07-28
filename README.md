@@ -10,11 +10,8 @@ Coding Boot Camp Final Project MERN Full Stack App
 
 ## Developers
 
-1. ...
+1. Mauricio Gomez
 
-2. ...
-
-3. ...
 
 ## Installation Instructions
 
@@ -31,10 +28,29 @@ Coding Boot Camp Final Project MERN Full Stack App
 
 - What languages is it written with: 
 
+Front End:
+- Rreact.JS
+- GrapghQL
+- Apollo Client
+- JavaScript
+- ES6
+- API
+- CSS
+- HTML
+- BootStrap
+
+  Back End:
+  - Node.Js
+  - Express.Js
+  - MongoDB
+  - Mongoose ODM
+  - (JWT) Authentication
+
 - What libraries are used: 
 
 - Other: 
-
+- Heroku Deployment
+- GitHub
 
 ## APIs
 
@@ -42,7 +58,9 @@ Coding Boot Camp Final Project MERN Full Stack App
 
 ## MVP (Minimum Viable Product)
 
--
+- Client: user interacting with Application. Web Browser and Mobile Browser.
+- Front End Application using React
+- Payment Platform
 
 
 ## Stretch Goals
