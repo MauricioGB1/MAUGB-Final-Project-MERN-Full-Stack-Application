@@ -6,8 +6,7 @@ Application to manage large Architectural design and Construction projects.
 
 
 ## Project Summary
-Construction industry needs to manage specialized projects; this application allows to manage large Architectural design and Construction projects. Allow customers to enter and manage multiple design and construction projects in their portfolio, projects can be updated on progress according to the architectural design and technical requirements. The app allow customers to monitor the progress of the project. Review and comment project updates. Provides a recommendation of specialized tools, equipment, or construction standards to be followed. Manage open vs closed activities for each phase of the project.
-
+The construction industry needs to manage specialized projects; this application allows us to manage large Architectural design and Construction projects. Allow customers to enter and manage multiple design and construction projects in their portfolio, projects can be updated on progress according to the architectural design and technical requirements. The app allows customers to monitor the progress of the project. Review and comment on project updates. Provides a recommendation of specialized tools, equipment, or construction standards to be followed. Manage open vs closed activities for each phase of the project.
 
 
 ...
@@ -76,5 +75,6 @@ Front End:
 ## Stretch Goals
 - Requirements database historical data from previous projects
 - Handling drawings
-- Technical reveiws vs requirements
-- Off line fuctionality
+- Technical reviews vs requirements
+- Off-line functionality
+
