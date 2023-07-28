@@ -61,7 +61,11 @@ Front End:
 -
 
 ## MVP (Minimum Viable Product)
-
+- Customer shall be able to enter multiple projects save into the database and manage each of them
+- Enter technical requirements per project
+- Add, Retrieve, Update , Delete or Read activities per project
+- Shows status per activity
+- List of suggested equipment to be used
 - Client: user interacting with Application. Web Browser and Mobile Browser.
 - Front End Application using React
 - Sign-up and Log-in section, password and e-mail validation
@@ -71,3 +75,6 @@ Front End:
 
 ## Stretch Goals
 - Requirements database historical data from previous projects
+- Handling drawings
+- Technical reveiws vs requirements
+- Off line fuctionality
