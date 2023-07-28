@@ -3,6 +3,7 @@ Coding Boot Camp Final Project MERN Full Stack App
 
 # Project Name
 
+Construction industry, Manage specialiced projects
 
 ## Project Summary
 
@@ -60,9 +61,10 @@ Front End:
 
 - Client: user interacting with Application. Web Browser and Mobile Browser.
 - Front End Application using React
+- Sign-up and Log-in section, password and e-mail validation
+- Customer Support section
 - Payment Platform
 
 
 ## Stretch Goals
-
 -
