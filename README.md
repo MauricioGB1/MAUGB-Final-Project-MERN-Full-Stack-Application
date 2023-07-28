@@ -2,10 +2,16 @@
 Coding Boot Camp Final Project MERN Full Stack App
 
 # Project Name
+Application to manage large Architectural design and Construction projects.
 
-Construction industry, Manage specialiced projects
 
 ## Project Summary
+Construction industry needs to manage specialiced projects; this application allows to manage large Architecttual design and Construction projects.
+Allow customers to enter and manage multiple design and construction projects in their portfolio, projects can be updated on progress according to the architectural design and technical requirements.
+The app allowcustomers to monitor the progress of the project.
+Review and comment project updates.
+Provides a recommendation of specialized tools, equipment, or construction standards to be followed.
+Manage open vs closed activities for each phase of the project. 
 
 ...
 
@@ -67,4 +73,4 @@ Front End:
 
 
 ## Stretch Goals
--
+- Requirements database historical data from previous projects
