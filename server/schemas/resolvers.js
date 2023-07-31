@@ -11,8 +11,8 @@ const resolvers = {
     helloWorld: () => {
       return "Hello World";
     },
-    sushi: () => {
-      return "Time to order sushi";
+    tool: () => {
+      return "Time to order new Tools";
     },
     categories: async () => {
       return await Category.find();
@@ -87,6 +87,8 @@ const resolvers = {
     //     throw new AuthenticationError('Not logged in');
     // },
   },
+
+
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
