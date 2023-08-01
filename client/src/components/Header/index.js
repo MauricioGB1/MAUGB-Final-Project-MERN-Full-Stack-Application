@@ -50,4 +50,58 @@ const Header = () => {
       });
     };
 
+    return (
+        <nav class="navbar is-success" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://architectual.herokuapp.com/">
+                    <img src={logo} width="112" height="28" class="navbar-logo" />
+                </a>
 
+                <a role="button" class="navbar-building" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="https://architectual.herokuapp.com/">
+                Home
+                </a>
+        
+                <a class="navbar-item" href="#projects">
+                Projects
+                </a>
+
+                <a class="navbar-item" href="#services">
+                Local Services
+                </a>
+
+                <a class="navbar-item" href="#help-desk">
+                Help Desk
+                </a>
+            </div>
+
+            
+            <div class="navbar-end">
+                <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-info" href="/signup">
+                    <strong>Signup</strong>
+                    </a>
+                    <a class="button is-light" href="/login">
+                    Login
+                    </a>
+                    <a class="button is-warning" href="#">
+                    Checkout
+                    </a>
+                </div>
+                </div>
+            </div>
+        </div>
+      </nav>
+  );
+};
+
+export default Header;
