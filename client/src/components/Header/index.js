@@ -21,5 +21,33 @@ const Header = () => {
     const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
     console.log(data);
 
-    
+    useEffect(() => {
+        if (data) {
+          stripePromise.then((res) => {
+            res.redirectToCheckout({ sessionId: data.checkout.session });
+          });
+        }
+      }, [data]);
+
+      const checkout = () => {
+        const projectIds = [];
+
+      state.cart.forEach((item) => {
+            item.forEach((project) => {
+              projectIds.push(project._id);
+            });
+          });
+
+    // state.cart[0].projects.forEach((item) => {
+    //   if (item.id !== null) {
+    //     projectIds.push(item.id);
+    //   }
+    // });
+    console.log(projectIds);
+
+    getCheckout({
+        variables: { projects: projectIds },
+      });
+    };
+
 
