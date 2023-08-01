@@ -32,8 +32,8 @@ The construction industry needs to manage specialized projects; this application
 - What languages is it written with: 
 
 Front End:
-- Rreact.JS
-- GrapghQL
+- React.JS
+- GraphQL
 - Apollo Client
 - JavaScript
 - ES6
