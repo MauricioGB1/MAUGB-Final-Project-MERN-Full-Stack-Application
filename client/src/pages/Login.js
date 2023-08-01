@@ -27,7 +27,37 @@ const handleChange = event => {
     try {
         const mutationResponse = await login({
           variables: { email: event.target[0].value, password: event.target[1].value }
-    });
+        });
+        const token = mutationResponse.data.login.token;
+        //console.log(mutationResponse);
+        Auth.login(token);
+        //console.log(mutationResponse.data.login.user.account)
+        const account = mutationResponse.data.login.user.account
+        if (account === 'seller') {
+          console.log("you have logged onto a Vendor account");
+          window.location.assign('/VendorDashboard');
+        } else {
+          console.log("you have logged onto a Customer account");
+          window.location.assign('/CustomerDashboard');
+        }
+      } catch (e) {
+        console.error(e);
+      }
+
+
+    // clear form values
+    setFormState({
+        username: '',
+        email: '',
+        password: ''
+      });
+    };
+
+    return (
+        
+    )
+
+
 
 }
 
