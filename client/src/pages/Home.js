@@ -37,3 +37,249 @@ function Home() {
       }, [loading, data, dispatch])
     
       console.log(data);
+
+      return (
+        <div className="center-children-vertical">
+          <h1 className="larger-font">Architectual Project Portfolio!</h1>
+          <br />
+          <div class="container">
+            <div class="columns">
+                <div class="card column is-one-quarter">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src={image1} alt="Image 1" />
+                        </figure>
+                    </div>
+            
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                            
+                            </div>
+                            <div class="media-content">
+                            
+                            </div>
+                        </div>
+            
+                        <div class="content">
+                            <b>Item</b>: Project 1
+                            <br />
+                            <b>Price</b>: $1000.99
+                            <br />
+                            <b>Target Date</b>: 10-26-2024
+                            <br /><br />
+                            <div class="card">
+                                <footer class="card-footer">
+                                    <a href="/customerdashboard" class="card-footer-item">Buy</a>
+                                    
+                                </footer>
+                            </div>
+                            <br />
+                            <time datetime="8-1-2023">11:09 PM - 1 August 2023</time>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="card column is-one-quarter">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src={image2} alt="Image-2" />
+                        </figure>
+                    </div>
+            
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                            
+                            </div>
+                            <div class="media-content">
+                            
+                            </div>
+                        </div>
+            
+                        <div class="content">
+                            <b>Item</b>: Project 2
+                            <br />
+                            <b>Price</b>: $2000.99
+                            <br />
+                            <b>Target Date</b>: 10-26-2024
+                            <br /><br />
+                            <div class="card">
+                                <footer class="card-footer">
+                                    <a href="/customerdashboard" class="card-footer-item">Buy</a>
+                                    
+                                </footer>
+                            </div>
+                            <br />
+                            <time datetime="8-1-2023">11:09 PM - 1 August 2023</time>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="card column is-one-quarter">
+                      <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src={image3} alt="Image-3" />
+                        </figure>
+                      </div>
+            
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                            
+                            </div>
+                            <div class="media-content">
+                            
+                            </div>
+                        </div>
+            
+                        <div class="content">
+                            <b>Item</b>: Project 3
+                            <br />
+                            <b>Price</b>: $3000.99
+                            <br />
+                            <b>Target Date</b>: 10-26-2024
+                            <br /><br />
+                            <div class="card">
+                                <footer class="card-footer">
+                                    <a href="/customerdashboard" class="card-footer-item">Buy</a>
+                                    
+                                </footer>
+                            </div>
+                            <br />
+                            <time datetime="8-1-2023">11:09 PM - 1 August 2023</time>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="card column is-one-quarter">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src={image4} alt="Image-4" />
+                        </figure>
+                    </div>
+            
+                    <div class="card-content">
+                          <div class="media">
+                            <div class="media-left">
+                            
+                            </div>
+                            <div class="media-content">
+                            
+                            </div>
+                          </div>
+            
+                        <div class="content">
+                            <b>Item</b>: Project 4
+                            <br />
+                            <b>Price</b>: $4000.99
+                            <br />
+                            <b>Target Date</b>: 10-26-2024
+                            <br /><br />
+                            <div class="card">
+                                <footer class="card-footer">
+                                    <a href="/customerdashboard" class="card-footer-item">Buy</a>
+                                    
+                                </footer>
+                            </div>
+                            <br />
+                            <time datetime="8-1-2023">11:09 PM - 1 August 2023</time>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <div class="columns">
+                    <div class="card column is-one-quarter">
+                      <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src={image5} alt="Image 5" />
+                        </figure>
+                      </div>
+            
+                      <div class="card-content">
+                          <div class="media">
+                            <div class="media-left">
+                            
+                            </div>
+                            <div class="media-content">
+                            
+                            </div>
+                          </div>
+            
+                          <div class="content">
+                            <b>Item</b>: Project 5
+                            <br />
+                            <b>Price</b>: $5000.99
+                            <br />
+                            <b>Target Date</b>: 10-26-2024
+                            <br /><br />
+                            <div class="card">
+                                <footer class="card-footer">
+                                    <a href="/customerdashboard" class="card-footer-item">Buy</a>
+                                    
+                                </footer>
+                            </div>
+                            <br />
+                            <time datetime="8-1-2023">11:09 PM - 1 August 2023</time>
+                          </div>
+                      </div>
+                  </div>
+            
+                  <div class="card column is-one-quarter">
+                      <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src={image6} alt="Image 6" />
+                        </figure>
+                      </div>
+            
+                      <div class="card-content">
+                          <div class="media">
+                            <div class="media-left">
+                            
+                            </div>
+                            <div class="media-content">
+                            
+                            </div>
+                          </div>
+            
+                          <div class="content">
+                            <b>Item</b>: Project 6
+                            <br />
+                            <b>Price</b>: $6000.99
+                            <br />
+                            <b>Target Date</b>: 10-26-2024
+                            <br /><br />
+                            <div class="card">
+                                <footer class="card-footer">
+                                    <a href="/customerdashboard" class="card-footer-item">Buy</a>
+                                    
+                                </footer>
+                            </div>
+                            <br />
+                            <time datetime="8-1-2023">11:09 PM - 1 August 2023</time>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <br />
+          {data && (
+            <div className="product-list">
+              {data.products.map((item) => (
+                <div className="product-card flex" key={item._id}>
+                  <img src={`/images/${item.image}`} className="margin-top-0" alt={"picture of " + item.name}/>
+                  <h1 className="text-align">{item.name}</h1>
+                  <h1 className="text-align">{item.description}</h1>
+                  <h1 className="text-align">Price: ${item.price}</h1>
+                  <h1 className="text-align">Quantity: {item.quantity}</h1>
+                  <button onClick={() => addToCart(item._id)}>Add To Cart</button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    }
+    
+    export default Home;
