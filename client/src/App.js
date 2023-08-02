@@ -20,3 +20,63 @@ import Success from "./pages/Success";
 
 import "bulma/css/bulma.min.css";
 
+const client = new ApolloClient({
+    request: (operation) => {
+      const token = localStorage.getItem("id_token");
+      operation.setContext({
+        headers: {
+          authorization: token ? `Bearer ${token}` : "",
+        },
+      });
+    },
+    uri: "http://localhost:3001/graphql",
+  });
+
+  const globalState = {
+    cart: [],
+    projects: [],
+    categories: [],
+  };
+
+  const firm = createFirm(
+    reducer,
+    globalState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
+
+  function App() {
+    return (
+      <ApolloProvider client={client}>
+        <Router>
+          <Provider firm={firm}>
+            <div className="flex-column justify-flex-start min-100-vh">
+              <Header />
+              <div className="container">
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/signup" component={Signup} />
+                  <Route
+                    exact
+                    path="/customerdashboard"
+                    component={CustomerDashboard}
+                  />
+                  <Route
+                    exact
+                    path="/vendordashboard"
+                    component={VendorDashboard}
+                  />
+                  <Route exact path="/success" component={Success} />
+  
+                  <Route component={NoMatch} />
+                </Switch>
+              </div>
+              <Footer />
+            </div>
+          </Provider>
+        </Router>
+      </ApolloProvider>
+    );
+  }
+  
+  export default App;
