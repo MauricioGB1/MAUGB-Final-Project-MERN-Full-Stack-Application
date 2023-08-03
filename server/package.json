@@ -10,7 +10,7 @@
     },
     "keywords": [],
     "author": "Mauricio Gomez",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
       "apollo-server-express": "^2.25.2",
       "bcrypt": "^5.0.1",
