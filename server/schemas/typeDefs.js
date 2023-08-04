@@ -15,7 +15,7 @@ const typeDefs = gql`
     firm: Firm
   }
 
-   type project {
+   type Project {
      _id: ID
      name: String
      price: Float
@@ -48,8 +48,6 @@ const typeDefs = gql`
   }
 
   type Query {
-    helloWorld: String
-    tool: String
     categories: [Category]
     users: [User]
     user(_id: ID!): User
