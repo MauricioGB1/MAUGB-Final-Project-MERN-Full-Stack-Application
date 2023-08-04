@@ -150,7 +150,9 @@ db.once("open", async () => {
 
     console.log("projects seeded");
 
-    await firms = await Firm.insertMany([
+    await Firm.deleteMany();
+
+    const firms = await Firm.insertMany([
 
         {
             firmName: "Firm1",
@@ -176,5 +178,5 @@ db.once("open", async () => {
 
     console.log("firms seeded")
 
-    ProcessingInstruction.exit();
-});
+    process.exit();
+  });
