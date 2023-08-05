@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ApolloProvider } from "@apollo/react-hooks";
-import ApolloClient from "apollo-boost";
-//import { createStore } from "redux";
+
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
+import { createStore } from "redux";
 import { reducer } from "./utils/reducers";
 import { Provider } from "react-redux";
 //import { setContext } from '@apollo/client/link/context'
@@ -33,17 +34,17 @@ const client = new ApolloClient({
     uri: "http://localhost:3001/graphql",
   });
 
-  const globalState = {
-    cart: [],
-    projects: [],
-    categories: [],
-  };
+         const globalState = {
+           cart: [],
+           projects: [],
+           categories: [],
+         };
 
-  const store = createStore(
-    reducer,
-    globalState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
+            const store = createStore(
+             reducer,
+            globalState,
+             window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+            );
 
   function App() {
     return (
@@ -55,19 +56,19 @@ const client = new ApolloClient({
               <div className="container">
                 <Switch>
                   <Route exact path="/" component={Home} />
-                  <Route exact path="/login" component={Login} />
-                  <Route exact path="/signup" component={Signup} />
+                  <Route exact path="/Login" component={Login} />
+                  <Route exact path="/Signup" component={Signup} />
                   <Route
                     exact
-                    path="/customerdashboard"
+                    path="/CustomerDashboard"
                     component={CustomerDashboard}
                   />
                   <Route
                     exact
-                    path="/vendordashboard"
+                    path="/VendorDashboard"
                     component={VendorDashboard}
                   />
-                  <Route exact path="/success" component={Success} />
+                  <Route exact path="/Success" component={Success} />
   
                   <Route component={NoMatch} />
                 </Switch>
