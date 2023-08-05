@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/IMG_0992.PNG";
+import logo from "../../assets/images/firm/logo.jpg";
 import Auth from "../../utils/auth";
 import { useSelector } from "react-redux";
 import { useLazyQuery } from "@apollo/client";
