@@ -4,11 +4,12 @@ import { QUERY_PROJECTS } from "../utils/queries";
 import { ADD_TO_CART, UPDATE_PROJECTS } from "../utils/actions";
 import { useQuery } from "@apollo/react-hooks";
 import image1 from "../assets/images/projects/image1.jpg";
-import image2 from "../assets/images/projects/image2";
+import image2 from "../assets/images/projects/image2.jpg";
 import image3 from "../assets/images/projects/image3.jpg";
 import image4 from "../assets/images/projects/image4.jpg";
 import image5 from "../assets/images/projects/image5.jpg";
 import image6 from "../assets/images/projects/image6.jpg";
+
 import image7 from "../assets/images/firm/image7.jpg";
 
 function Home() {
