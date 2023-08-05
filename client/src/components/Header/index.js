@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/IMG_0992.PNG";
-
 import Auth from "../../utils/auth";
 import { useSelector } from "react-redux";
 import { useLazyQuery } from "@apollo/client";
@@ -11,67 +10,67 @@ import { loadStripe } from "@stripe/stripe-js";
 const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
 const Header = () => {
-    const logout = (event) => {
-      event.preventDefault();
-      Auth.logout();
-    };
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
-    const state = useSelector((state) => state);
+  const state = useSelector((state) => state);
 
-    const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
-    console.log(data);
+  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+  console.log(data);
 
-    useEffect(() => {
-        if (data) {
-          stripePromise.then((res) => {
-            res.redirectToCheckout({ sessionId: data.checkout.session });
-          });
-        }
-      }, [data]);
+  useEffect(() => {
+    if (data) {
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
+    }
+  }, [data]);
 
-      const checkout = () => {
-        const projectIds = [];
+  const checkout = () => {
+    const productIds = [];
 
-      state.cart.forEach((item) => {
-            item.forEach((project) => {
-              projectIds.push(project._id);
-            });
-          });
+    state.cart.forEach((item) => {
+      item.forEach((product) => {
+        productIds.push(product._id);
+      });
+    });
 
-    // state.cart[0].projects.forEach((item) => {
+    // state.cart[0].products.forEach((item) => {
     //   if (item.id !== null) {
-    //     projectIds.push(item.id);
+    //     productIds.push(item.id);
     //   }
     // });
-    console.log(projectIds);
+    console.log(productIds);
 
     getCheckout({
-        variables: { projects: projectIds },
-      });
-    };
+      variables: { products: productIds },
+    });
+  };
 
-    return (
-        <nav class="navbar is-success" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="https://architectual.herokuapp.com/">
-                    <img src={logo} width="112" height="28" class="navbar-logo" />
-                </a>
-
-                <a role="button" class="navbar-building" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+  return (
+    <nav class="navbar is-success" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://lets-eat-a-deal.herokuapp.com/">
+                <img src={logo} width="112" height="28" class="navbar-logo" />
+            </a>
+      
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
             </a>
         </div>
-
+      
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="https://architectual.herokuapp.com/">
+                <a class="navbar-item" href="https://lets-eat-a-deal.herokuapp.com/">
                 Home
                 </a>
         
-                <a class="navbar-item" href="#projects">
-                Projects
+                <a class="navbar-item" href="#products">
+                Local Products
                 </a>
 
                 <a class="navbar-item" href="#services">
@@ -82,8 +81,7 @@ const Header = () => {
                 Help Desk
                 </a>
             </div>
-
-            
+        
             <div class="navbar-end">
                 <div class="navbar-item">
                 <div class="buttons">

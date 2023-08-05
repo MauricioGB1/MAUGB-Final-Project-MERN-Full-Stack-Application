@@ -1,12 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
-import { createFirm } from "redux";
+//import { createStore } from "redux";
 import { reducer } from "./utils/reducers";
 import { Provider } from "react-redux";
-import { setContext } from '@apollo/client/link/context'
-import { createHttpLink } from "@apollo/client";
+//import { setContext } from '@apollo/client/link/context'
+//import { createHttpLink } from "@apollo/client";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -39,7 +39,7 @@ const client = new ApolloClient({
     categories: [],
   };
 
-  const firm = createFirm(
+  const store = createStore(
     reducer,
     globalState,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -49,7 +49,7 @@ const client = new ApolloClient({
     return (
       <ApolloProvider client={client}>
         <Router>
-          <Provider firm={firm}>
+          <Provider store={store}>
             <div className="flex-column justify-flex-start min-100-vh">
               <Header />
               <div className="container">
