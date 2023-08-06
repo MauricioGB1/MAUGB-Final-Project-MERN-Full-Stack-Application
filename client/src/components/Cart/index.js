@@ -1,55 +1,107 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { QUERY_CHECKOUT, QUERY_PRODUCTS } from "../../utils/queries";
-import { useLazyQuery, useQuery } from "@apollo/react-hooks";
-import { ADD_TO_CART } from "../../utils/actions";
+import React, { useEffect } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+import { useLazyQuery } from '@apollo/client';
+import { QUERY_CHECKOUT } from '../../utils/queries';
+import { idbPromise } from '../../utils/helpers';
+import CartItem from '../CartItem';
+import Auth from '../../utils/auth';
+import { useStoreContext } from '../../utils/GlobalState';
+import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 
-function Cart() {
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
+import './style.css';
+import { BiShocked } from 'react-icons/bi';
+import { BsCartFill } from 'react-icons/bs';
 
-  const { data } = useQuery(QUERY_PRODUCTS);
+const stripePromise = loadStripe('pk_test_51LULRzE5IrKGMKYOVpxNuSyeuS716Ta9qJhSc5B668buXvqKWCSQTKRDcuPmqCywCfYZfudggJZJnEA6AY4aXwfF000fYOqZcC');
 
-  // const [getCheckout, { checkoutData }] = useLazyQuery(QUERY_CHECKOUT);
-  // console.log(data);
+const Cart = () => {
+  const [state, dispatch] = useStoreContext();
+  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
-  // useEffect(() => {
-  //   console.log("working");
-  // }, [checkoutData]);
+  useEffect(() => {
+    if (data) {
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
+    }
+  }, [data]);
 
-  const addToCart = () => {
-    dispatch({
-      type: ADD_TO_CART,
-      product: data,
+  useEffect(() => {
+    async function getCart() {
+      const cart = await idbPromise('cart', 'get');
+      dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+    }
+
+    if (!state.cart.length) {
+      getCart();
+    }
+  }, [state.cart.length, dispatch]);
+
+  function toggleCart() {
+    dispatch({ type: TOGGLE_CART });
+  }
+
+  function calculateTotal() {
+    let sum = 0;
+    state.cart.forEach((item) => {
+      sum += item.price * item.purchaseQuantity;
     });
-  };
+    return sum.toFixed(2);
+  }
 
-  // const checkout = () => {
-  //   const productIds = [];
+  function submitCheckout() {
+    const productIds = [];
 
-  //   state.cart[0].products.forEach((item) => {
-  //     productIds.push(item.id);
-  //   });
-  //   console.log(productIds);
-  //   console.log(data);
+    state.cart.forEach((item) => {
+      for (let i = 0; i < item.purchaseQuantity; i++) {
+        productIds.push(item._id);
+      }
+    });
 
-  //   // getCheckout({
-  //   //   variables: { products: ["614a6da4d473c64e7385683e"] },
-  //   // });
+    getCheckout({
+      variables: { products: productIds },
+    });
+  }
 
-  //   console.log(checkoutData);
-  //   // stripePromise.then((res) => {
-  //   //   res.redirectToCheckout({ sessionId: checkoutData.checkout.session });
-  //   // });
-  // };
+  if (!state.cartOpen) {
+    return (
+      <div className="cart-closed" onClick={toggleCart}>
+      <span role="img" aria-label="trash">< BsCartFill style={{fontSize:'45px',justifyContent:'center'}} />
+</span>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <h1>Testing</h1>
-      <button onClick={addToCart}>Add to cart</button>
-      {/* <button onClick={checkout}>Checkout</button> */}
+    <div className="cart">
+      <div className="close" onClick={toggleCart}>
+        [close]
+      </div>
+      <h2>CHECKOUT CART</h2>
+      {state.cart.length ? (
+        <div>
+          {state.cart.map((item) => (
+            <CartItem key={item._id} item={item} />
+          ))}
+
+          <div className="flex-row space-between">
+            <strong>Total: ${calculateTotal()}</strong>
+
+            {Auth.loggedIn() ? (
+              <button onClick={submitCheckout}>Checkout</button>
+            ) : (
+              <span>(log in to check out)</span>
+            )}
+          </div>
+        </div>
+      ) : (
+        <h3>
+          <span role="img" aria-label="shocked">< BiShocked style={{colour: 'navy', fontSize: '50px'}}/></span>
+            Please add tool and design project.
+        </h3>
+      )}
     </div>
   );
-}
+};
 
 export default Cart;
