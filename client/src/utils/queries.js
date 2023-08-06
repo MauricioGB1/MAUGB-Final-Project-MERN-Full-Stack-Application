@@ -1,30 +1,26 @@
-import gql from "graphql-tag";
+import { gql } from '@apollo/client';
 
-export const QUERY_CHECKOUT = gql`
-  query checkout($projects: [ID]!) {
-    checkout(projects: $projects) {
-      session
-    }
-  }
-`;
-
-
-export const QUERY_PROJECTS = gql`
-  query {
-    projects {
-      name
+export const QUERY_PRODUCTS = gql`
+  query getProducts($category: ID) {
+    products(category: $category) {
       _id
-      price
+      name
       description
-      image
+      price
       quantity
+      image
+      category {
+        _id
+      }
     }
   }
 `;
 
-export const QUERY_ALL_PROJECTS = gql`
+
+
+export const QUERY_ALL_PRODUCTS = gql`
   {
-    projects {
+    products {
       _id
       name
       description
@@ -37,15 +33,24 @@ export const QUERY_ALL_PROJECTS = gql`
   }
 `;
 
+export const QUERY_CATEGORIES = gql`
+  {
+    categories {
+      _id
+      name
+    }
+  }
+`;
+
 export const QUERY_USER = gql`
   {
     user {
-      username
-      email
+      firstName
+      lastName
       orders {
         _id
         purchaseDate
-        projects {
+        products {
           _id
           name
           description
@@ -54,6 +59,13 @@ export const QUERY_USER = gql`
           image
         }
       }
+    }
+  }
+`;
+export const QUERY_CHECKOUT = gql`
+  query getCheckout($products: [ID]!) {
+    checkout(products: $products) {
+      session
     }
   }
 `;
