@@ -1,4 +1,6 @@
 {
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
@@ -14,19 +16,10 @@
       "src": "logo512.png",
       "type": "image/png",
       "sizes": "512x512"
-    },
-    {
-      "src": "src/assets/images/projects/image5.jpg",
-      "type": "image/jpg",
-      "sizes": "512x512"
     }
   ],
-  "name": "Architectual & Construction Management App",
-  "short_name": "Architectual",
-  "orientation": "portrait",
+  "start_url": ".",
   "display": "standalone",
-  "start_url": "./index.html",
-  "description": "This application is a platform to manage architectual and construction projects.",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
