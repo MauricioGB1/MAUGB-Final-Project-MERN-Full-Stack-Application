@@ -1,133 +1,97 @@
 import React, { useState } from 'react';
-import { useMutation } from '@apollo/react-hooks';
-import { LOGIN_USER } from '../utils/mutations';
-
+import { useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
+import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-const Login = props => {
+
+function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error }] = useMutation(LOGIN_USER);
+  const [login, { error }] = useMutation(LOGIN);
 
-  // update state based on form input changes
-const handleChange = event => {
-  const { name, value } = event.target;
-
-    setFormState({
-      ...formState,
-      [name]: value
-    });
-};
-
-  // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    //console.log(event.target[0].value);
-    //console.log(event.target[1].value);
-
     try {
-        const mutationResponse = await login({
-          variables: { email: event.target[0].value, password: event.target[1].value }
-        });
-        const token = mutationResponse.data.login.token;
-        //console.log(mutationResponse);
-        Auth.login(token);
-        //console.log(mutationResponse.data.login.user.account)
-        const account = mutationResponse.data.login.user.account
-        if (account === 'seller') {
-          console.log("you have logged onto a Vendor account");
-          window.location.assign('/VendorDashboard');
-        } else {
-          console.log("you have logged onto a Customer account");
-          window.location.assign('/CustomerDashboard');
-        }
-      } catch (e) {
-        console.error(e);
-      }
-
-
-    // clear form values
-    setFormState({
-        username: '',
-        email: '',
-        password: ''
+      const mutationResponse = await login({
+        variables: { email: formState.email, password: formState.password },
       });
-    };
+      const token = mutationResponse.data.login.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-    return (
-        <main className="is-mobile is-centered">
-          <div className="column is-half">
-            <div className="card">
-              <header className="card-header">
-                <p class="card-header-title is-centered">
-                  Login
-                </p>
-              </header>
-              <div className="card-content">
-                <form onSubmit={handleFormSubmit}>
-                  <div className="field">
-                    <label className="label">Email</label>
-                    <div className="control has-icons-left has-icons-right">
-                      <input className="input is-success"
-                        type="email"
-                        name="email"
-                        id="email"
-                        placeholder="Enter your email"
-                        defaultValue={formState.email}
-                        onChange={handleChange} />
-                      <span className="icon is-small is-left">
-                        <i className="fas fa-envelope"></i>
-                      </span>
-                      <span className="icon is-small is-right">
-                        <i className="fas fa-exclamation-triangle"></i>
-                      </span>
-                    </div>
-                  </div>
-    
-                  <div className="field">
-                    <label className="label">Password</label>
-                    <p class="control has-icons-left">
-                      <input className="input is-success"
-                        type="password"
-                        id="password"
-                        placeholder="Enter your password"
-                        defaultValue={formState.password}
-                        onChange={handleChange} />
-                      <span className="icon is-small is-left">
-                        <i className="fas fa-lock"></i>
-                      </span>
-                    </p>
-                  </div>
-                  <button className="button is-success" type="submit">
-                    Submit
-                  </button>
-                </form>
-    
-                {error && <div>Login failed</div>}
-              </div>
-            </div>
-            <div className="card">
-              <header className="card-header">
-                <p class="card-header-title is-centered">
-                  Temporary redirects
-                </p>
-              </header>
-              <div className="card-content">
-                <p>Please select one of the buttons to go to the Vendor or Customer dashboards</p>
-              </div>
-              <div className="card-content">
-                <button className="button is-success">
-                  <a href="/vendordashboard">Vendor</a>
-                </button>
-              </div>
-              <div className="card-content">
-                <button className="button is-success">
-                  <a href="/customerdashboard">Customer</a>
-                </button>
-              </div>
-            </div>
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  return (
+    <div className="container my-1">
+      <Link to="/signup">← Go to Signup</Link>
+
+      <h2>Login</h2>
+      <form onSubmit={handleFormSubmit}>
+        <div className="flex-row space-between my-4">
+          <label htmlFor="email">Email address:</label>
+          <input
+            placeholder="youremail@test.com"
+            name="email"
+            type="email"
+            id="email"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-4">
+          <label htmlFor="pwd">Password:</label>
+          <input
+            placeholder="******"
+            name="password"
+            type="password"
+            id="pwd"
+            onChange={handleChange}
+          />
+        </div>
+        {error ? (
+          <div>
+            <p className="error-text">The provided credentials are incorrect</p>
           </div>
-        </main>
-      );
-    };
-    
-    export default Login;
+        ) : null}
+        <div className="flex-row flex-end">
+          <button type="submit">Submit</button>
+        </div>
+          <div>
+          <p><strong>We welcome you back to our Login Page.</strong></p>
+          <br></br>
+          <p>If you have forgotten your password and you will have to sign up/register with us again. </p>
+          <br></br>
+          {/* More marketing materials */}
+          <br></br>
+          <p style={{color: 'black', fontSize:'30px'}}>Our Professional Services Include:</p>
+          <br></br>
+          <p>1.  Digital Management.</p>
+          <br></br>
+          <p>2.  Architectonic Design.</p>
+          <br></br>
+          <p>3.  Project Management.</p>
+          <br></br>
+          <p>4.  Approvals, Regulations and Legal aspects.</p>
+          <br></br>
+          <p>5. Architectural, Project management and Construction through the lifecycle of your project.</p>
+          <br></br>
+          <p>6. Quality assurance with the Highest Standards.</p>
+          <br></br>
+          
+          </div>
+
+
+      </form>
+    </div>
+  );
+}
+
+export default Login;
