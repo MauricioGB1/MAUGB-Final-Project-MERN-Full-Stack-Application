@@ -211,7 +211,7 @@ db.once('open', async () => {
       price: 42000.00,
       quantity: 1
     },    {
-      name: 'New Yorki Sports Arena & Events Center',
+      name: 'New York Sports Arena',
       category: categories[4]._id,
       description:
       '- Pre-agreement Phase, - Schematic Design Phase, - Design Development Phase , Construction Documents Phase, Bidding and Negotiation Phase, Contract Administration Phase, Post-construction Services.', 
