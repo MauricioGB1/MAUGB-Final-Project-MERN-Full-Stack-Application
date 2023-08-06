@@ -1,149 +1,107 @@
 import React, { useState } from 'react';
-import { useMutation } from '@apollo/react-hooks';
+import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 
-import Auth from '../utils/auth';
 
-const Signup = () => {
-  const [formState, setFormState] = useState({ username: '', email: '', password: '' });
-  const [addUser, { error }] = useMutation(ADD_USER);
 
-  // update state based on form input changes
-  const handleChange = event => {
+function Signup(props) {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [addUser] = useMutation(ADD_USER);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    const mutationResponse = await addUser({
+      variables: {
+        email: formState.email,
+        password: formState.password,
+        firstName: formState.firstName,
+        lastName: formState.lastName,
+      },
+    });
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
+  };
+
+  const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormState({
       ...formState,
-      [name]: value
+      [name]: value,
     });
   };
 
-
- // submit form
- const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    console.log(event);
-
-    try {
-      const mutationResponse = await addUser({
-        variables: { username: event.target[0].value, email: event.target[1].value, password: event.target[2].value }
-      });
-
-      Auth.login(mutationResponse.data.addUser.token);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-
   return (
-    <main className="is-mobile is-centered">
-      <div className="column is-half">
-        <div className="card">
-          <header className="card-header">
-            <p class="card-header-title is-centered">
-              Sign Up
-            </p>
-          </header>
-          <div className="card-content">
-            <form onSubmit={handleFormSubmit}>
-              <div className="field">
-                <label className="label">Username</label>
-                <div className="control has-icons-left has-icons-right">
-                  <input className="input is-success"
-                    type="username"
-                    name="username"
-                    placeholder="Your Username"
-                    defaultValue={formState.username}
-                    onChange={handleChange} />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-user"></i>
-                  </span>
-                  <span className="icon is-small is-right">
-                    <i className="fas fa-check"></i>
-                  </span>
-                </div>
-            </div>
+   
+    <div className="container col-12 md-auto">
+      <Link to="/login">← Go to Login</Link>
 
-            <div className="field">
-                <label className="label">Email</label>
-                <div className="control has-icons-left has-icons-right">
-                  <input className="input is-success"
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Email input"
-                    defaultValue={formState.email}
-                    onChange={handleChange} />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-envelope"></i>
-                  </span>
-                  <span className="icon is-small is-right">
-                    <i className="fas fa-exclamation-triangle"></i>
-                  </span>
-                </div>
-            </div>
+      <h2>Signup</h2>
+      <form onSubmit={handleFormSubmit}>
+        <div className="flex-row space-between mb-4">
+        
+          <label htmlFor="firstName">First Name:</label>
+          <input
+            placeholder="First"
+            name="firstName"
+            type="firstName"
+            id="firstName"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between mb-4">
+          <label htmlFor="lastName">Last Name:</label>
+          <input
+            placeholder="Last"
+            name="lastName"
+            type="lastName"
+            id="lastName"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between mb-4">
+          <label htmlFor="email">Email:</label>
+          <input
+            placeholder="youremail@test.com"
+            name="email"
+            type="email"
+            id="email"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between mb-4">
+          <label htmlFor="pwd">Password:</label>
+          <input
+            placeholder="******"
+            name="password"
+            type="password"
+            id="pwd"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row flex-end">
+          <button type="submit">Submit</button>
+        </div>
+        {/* Marketing Materials - Affordable Ski Breaks  */}
+        <div>
+          <br></br>
+        <p><strong>Thank you for registering with us.  Start enjoying  our professional services <span style={{ color: 'black' }}> We will take care to manage and develop your project.</span></strong></p>
+        <br></br>
+        <p>We are very excited that you have decided to sign up for our application and interact with our website. </p>
+        <br></br>
+        <p>Our firm recognizes that different backgrounds and vantage points can enrich our work and our relationships with clients..</p>
+        <br></br>
+        <p>Our team is formed by a group of people respected for their personal character and professional expertise.  </p>
+        <br></br>
+        <br></br>
+        <p>Architectual & Construction Professional Team</p>
 
-            <div className="field">
-                <label className="label">Password</label>
-                <p class="control has-icons-left">
-                  <input className="input is-success"
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    default={formState.password}
-                    onChange={handleChange} />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-lock"></i>
-                  </span>
-                </p>
-            </div>
-
-
-
-            <div className="control">
-                <label className="radio">
-                  <input type="radio" name="account" />
-                  Vendor
-                </label>
-                <label className="radio">
-                  <input type="radio" name="account" checked />
-                  Customer
-                </label>
-            </div>
-              <button className="button is-success" type="submit">
-                Submit
-              </button>
-            </form>
-
-            {error && <div>Signup failed</div>}
-          </div>
         </div>
 
-
-        <div className="card">
-          <header className="card-header">
-            <p class="card-header-title is-centered">
-              Temporary redirects
-            </p>
-          </header>
-          <div className="card-content">
-            <p>Please select one of the buttons to go to the Vendor or Customer dashboards</p>
-          </div>
-          <div className="card-content">
-            <button className="button is-success">
-              <a href="/vendordashboard">Vendor</a>
-            </button>
-          </div>
-          <div className="card-content">
-            <button className="button is-success">
-              <a href="/customerdashboard">Customer</a>
-            </button>
-          </div>
-        </div>
-      </div>
-    </main>
+      </form>
+    </div>
   );
-};
+}
 
 export default Signup;
