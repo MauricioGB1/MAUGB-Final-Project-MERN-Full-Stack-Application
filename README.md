@@ -26,6 +26,7 @@ If your README is long, add a table of contents to make it easy for users to fin
 - [Installation](#installation)
 - [Usage](#usage)
 - [Developers](#developers)
+- [Technologies](#technologies)
 - [Credits](#credits)
 - [License](#license)
 - [Features](#features)
@@ -47,6 +48,34 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 ## Developers
 
 Mauricio Gomez
+
+## Technologies: 
+
+Thechnologies used for this application: Full Tech Stack  MERN application
+
+Front End:
+- React.JS
+- GraphQL
+- Apollo Client
+- JavaScript
+- ES6
+- API
+- CSS
+- HTML
+- BootStrap
+
+  Back End:
+  - Node.Js
+  - Express.Js
+  - MongoDB
+  - Mongoose ODM
+  - (JWT) Authentication
+
+- What libraries are used: 
+
+- Other: 
+- Heroku Deployment
+- GitHub
    
 ## Credits
 -	Generate license badge: https://shields.io/ .  
@@ -94,33 +123,6 @@ If you would like to contribute please send an e-mail to gomezb_mauricio@hotmail
 
 - Place various screens of your app here after they have been built
 
-## Technologies used: 
-
-Full Tech Stack  MERN application
-
-Front End:
-- React.JS
-- GraphQL
-- Apollo Client
-- JavaScript
-- ES6
-- API
-- CSS
-- HTML
-- BootStrap
-
-  Back End:
-  - Node.Js
-  - Express.Js
-  - MongoDB
-  - Mongoose ODM
-  - (JWT) Authentication
-
-- What libraries are used: 
-
-- Other: 
-- Heroku Deployment
-- GitHub
 
 
 
