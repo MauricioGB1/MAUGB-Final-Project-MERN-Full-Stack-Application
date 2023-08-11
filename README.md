@@ -1,7 +1,7 @@
 # MAUGB-Final-Project-MERN-Full-Stack-Application
 Coding Boot Camp Final Project MERN Full Stack App
 
-# Project Name
+# Architectural Management Application
 Application to manage large Architectural design and Construction projects.
 
 
