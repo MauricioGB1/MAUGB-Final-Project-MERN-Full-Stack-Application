@@ -45,6 +45,42 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 ![alt text](assets/images/screenshot.png)
 
+
+![alt text](./client/src/assets/imagesrd/initial-main.jpg)
+
+
+![alt text](./client/src/assets/imagesrd/main1.jpg)
+
+![alt text](./client/src/assets/imagesrd/main2.jpg)
+
+![alt text](./client/src/assets/imagesrd/signup.jpg )
+
+
+![alt text](./client/src/assets/imagesrd/login.jpg )
+
+![alt text](./client/src/assets/imagesrd/overview.jpg )
+
+![alt text](./client/src/assets/imagesrd/categories.jpg )
+
+![alt text](./client/src/assets/imagesrd/hospitality.jpg )
+
+![alt text](./client/src/assets/imagesrd/sports.jpg )
+
+![alt text](./client/src/assets/imagesrd/project1.jpg )
+
+![alt text](./client/src/assets/imagesrd/project2.jpg )
+
+![alt text](./client/src/assets/imagesrd/bim.jpg)
+
+![alt text](./client/src/assets/imagesrd/tools.jpg )
+
+![alt text](./client/src/assets/imagesrd/purchase1.jpg )
+
+![alt text](./client/src/assets/imagesrd/query1.jpg )
+
+![alt text](./client/src/assets/imagesrd/query3.jpg )
+
+
 ## Developers
 
 Mauricio Gomez
